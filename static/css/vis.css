@@ -1,0 +1,93 @@
+#home {
+    position:absolute;
+    left: 10px;
+    top: 5%;     
+   padding: 1px;
+   background-color: rgba(255, 255, 255, 0.8);
+   border-radius: 5px;
+   border:  black solid;
+   font-size: 5px;
+   color: #333;
+   cursor: pointer;
+   font-weight: bold;
+ }
+ #zoom-out-btn {
+    position:absolute;
+    left: 10px;
+    top: 25%;  
+   padding: 1px;
+   background-color: rgba(255, 255, 255, 0.8);
+   border-radius: 5px;
+   border:  black solid;
+   font-size: 5px;
+   color: #333;
+   cursor: pointer;
+   font-weight: bold;
+ }
+
+ #zoom-in-btn {
+   position: absolute;
+   left: 10px;
+   top: 15%;
+   padding: 1px;
+   background-color: rgba(255, 255, 255, 0.8);
+   border-radius: 5px;
+   border:  black solid;
+   font-size: 5px;
+   color: #333;
+   cursor: pointer;
+   font-weight: bold;
+ }
+
+ #Bas {
+   position: absolute;
+   padding: 1px;
+   top: 55%;
+   left: 10px;
+   background-color: rgba(255, 255, 255, 0.8);
+   border-radius: 5px;
+   border:  black solid;
+   font-size: 5px;
+   color: #333;
+   cursor: pointer;
+   font-weight: bold;
+ }
+ #rotate {
+   position: absolute;
+   padding: 1px;
+   left: 10px;
+   top: 35%;
+   background-color: rgba(255, 255, 255, 0.8);
+   border-radius: 5px;
+   border:  black solid;
+   font-size: 5px;
+   color: #333;
+   cursor: pointer;
+   font-weight: bold;
+ }
+
+ #Haut {
+   position: absolute;
+   padding: 1px;
+   top: 45%;
+   left: 10px;
+   background-color: rgba(255, 255, 255, 0.8);
+   border-radius: 5px;
+   border: black solid;
+   font-size: 5px;
+   color: #333;
+   cursor: pointer;
+   font-weight: bold;
+ }
+ #night {
+    position:absolute;
+    left: 10px;
+    top: 65%;     
+   padding: 1px;
+   background-color: rgba(255, 255, 255, 0.8);
+   border-radius: 5px;
+   border:  black solid;
+   font-size: 5px;
+   color: #333;
+   cursor: pointer;
+   font-weight: bold;}

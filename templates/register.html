@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/log.css') }}">
+<style>
+  .title-text {
+    position: fixed;
+    color: #fff;
+    left: 0%;
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none
+    ;
+  }
+  </style>
+  {% endblock %}
+
+{% block content %}
+{% block log %}
+{% endblock %}
+
+{% block sidebar %}
+{% endblock %}
+
+<div class="titleov">
+  <h1 class="title-text" >D-I-Y PERGOLA</h1>
+  </div>
+
+<div class="login-page">
+  <div class="form">
+    <form class="login-form" method="POST">
+      <input type="text" placeholder="username" name="username"/>
+      <input type="email" placeholder="email" name="email"/>
+      <input type="number" placeholder="age" name="age"/>
+      <input type="password" placeholder="password" name="password"/>
+      <input type="password" placeholder="Confirm password" name="Confirm password"/>
+      <button>login</button>
+      <p class="message">Already registered? <a href="/login">Sign In</a></p>
+    </form>
+  </div>
+  <div style="margin-left: 30%;margin-top: -20%;color: red;font-size: large;font-weight: bold;font-family: 'Times New Roman', Times, serif;">{{text}}</div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  localStorage.setItem('mat', 'invisible');
+  localStorage.setItem('vis', 'invisible');
+  const ismobile=/Android|webOS|iphone/i.test(navigator.userAgent);
+
+if(ismobile){
+
+  var form=document.getElementsByClassName("form");
+  form[0].style.marginTop="800px"
+  form[0].style.scale="2"
+}
+  </script>
+
+
+{% endblock %}

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Choix du carré</title>
+  <style>
+   
+
+  </style>
+</head>
+<body >
+  <div class="titleov">{% block titleov %}{% endblock %}</div>
+  <div class="title">{% block title %}{% endblock %}</div>
+  {% block content %}
+  <h1 style="margin-top: 10px;margin-left: -15%;font-size: 30px;">Choisissez vos modules</h1>
+  <form id="select-square-form">
+    <div class="grid">
+      {% for i in range(1, 13) %}
+        {% set selected = '' %}
+        {% if i == 1 %}
+          {% set selected = 'selected' %}
+        {% endif %}
+        <div class="square" data-square="{{ i }}"></div>
+      {% endfor %}
+    </div>
+    <div class="options-container">
+      <h1 class="ent">PERSONNALISEZ VOS MODULE</h1>
+      <div>
+        <h2>Couleur</h2>
+        <div class="color-options">
+          <div class="color-option black"></div>
+          <div class="color-option red"></div>
+          <div class="color-option white"></div>
+          <div class="color-option blue"></div>
+        </div>
+      </div>
+      <div>
+        <h2>Hauteur</h2>
+        <div class="height-options">
+          <div class="height-option selected">2m</div>
+          <div class="height-option">4m</div>
+          <div class="height-option">5m</div>
+        </div>
+      </div>
+      <div>
+        <h2>Taille :</h2>
+        <div class="size-options">
+          <div class="size-option selected">1x1</div>
+          <div class="size-option">2x2</div>
+          <div class="size-option">3x3</div>
+        </div>
+        </div>
+    </div>
+        
+  
+  </form>
+
+  <div class="sidebar">
+    <ul>
+      <li><a href="/">ACCUEIL</a></li>
+      <li><a href="/Choix">CHOISIR</a></li>
+      <li><a href="/logout">LOGOUT</a></li>
+    </ul>
+  </div>
+  {% endblock %}
+  <script>
+    let selectedSquares = [];
+
+    function toggleSquare(square) {
+      const index = selectedSquares.indexOf(square);
+      if (index === -1) {
+        // Le carré n'est pas encore sélectionné, on l'ajoute à la liste
+        selectedSquares.push(square);
+        square.classList.remove('plus');
+        square.classList.add('minus');
+        square.classList.add('clicked');
+      } else {
+        // Le carré est déjà sélectionné, on le supprime de la liste
+        selectedSquares.splice(index, 1);
+        square.classList.remove('minus');
+        square.classList.add('plus');
+        square.classList.remove('clicked');
+      }
+    }
+
+    function handleSquareClick(event) {
+      const square = event.target;
+      toggleSquare(square);
+    }
+
+    function handleSubmit(event) {
+      event.preventDefault();
+      const selectedValues = selectedSquares.map(square => square.dataset.square);
+      alert(`Carrés sélectionnés : ${selectedValues.join(', ')}`);
+    }
+
+    const squares = document.querySelectorAll('.square');
+    squares.forEach(square => square.addEventListener('click', handleSquareClick));
+
+    const form = document.querySelector('#select-square-form');
+    form.addEventListener('submit', handleSubmit);
+
+    function applyOptions() {
+  const color = document.getElementById('color-select').value;
+  const height = document.getElementById('height-select').value;
+  const size = document.querySelector('input[name="size"]:checked').value;
+
+  const squares = document.querySelectorAll('.square');
+  squares.forEach(square => {
+    square.style.backgroundColor = color;
+    square.style.height = height;
+    square.style.width = square.style.height.replace('m', '') * size + 'm';
+  });
+}
+
+const applyButton = document.getElementById('apply-button');
+applyButton.addEventListener('click', applyOptions);
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+
+{% extends "List_mat.html" %}
+
+{% block styles %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/list_mat.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/sidebar.css') }}">
+<style>
+
+#ac3{
+  color: red;
+      
+}
+
+.title-text {
+  position: fixed;
+  color: #fff;
+  left: 6%;
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none
+  ;
+}
+
+
+</style>
+
+
+{% endblock %}
+
+{% block log %}
+<li><img src= "{{ url_for('static', filename='image/verifier.png') }}" style="height: 30px;width: 30px;position: fixed;margin-left: -40px;margin-top: -10px;"><a href="/gestion" id="ac" class="side" >COMMANDE</a></li>
+<li><img src= "{{ url_for('static', filename='image/valider.png') }}" style="height: 30px;width: 30px;position: fixed;margin-left: -40px;margin-top: -10px;"><a href="/filtre_valide" id="ac1" class="side" >VALIDE</a></li>
+<li><img src= "{{ url_for('static', filename='image/avertissement.png') }}" style="height: 30px;width: 30px;position: fixed;margin-left: -40px;margin-top: -10px;"><a href="/filtre_attente" id="ac2" class="side" >EN ATTENTE</a></li>
+<li><img src= "{{ url_for('static', filename='image/oeil.png') }}" style="height: 30px;width: 30px;position: fixed;margin-left: -40px;margin-top: -10px;"><a href="/visiteur" id="ac3" class="side" >VISITEUR</a></li>
+<li><img src= "{{ url_for('static', filename='image/manquer-de.png') }}" style="height: 30px;width: 30px;position: fixed;margin-left: -40px;margin-top: -10px;"><a href="/besoin" id="ac4" class="side" >BESOINS</a></li>
+<li><img src= "{{ url_for('static', filename='image/entreprise.png') }}" style="height: 30px;width: 30px;position: fixed;margin-left: -40px;margin-top: -10px;"><a href="/pred" id="ac5" class="side" >PREDICTION</a></li>
+<hr style="margin-top: 15px;border:0.5px  solid gray;margin-bottom: 5px;" >
+<li id="logout" ><img src= "{{ url_for('static', filename='image/se-deconnecter.png') }}" style="height: 40px;width: 30px;position: fixed;margin-left: -40px;margin-top: -10px;"><a  href="/login" class="side" > LOG OUT</a></li>
+
+
+      {% endblock %}
+{% block content %}
+
+
+{% block title %}
+<div class="titleov">
+  <h1 class="title-text" style="margin-left: -5%;" ><a class="tit" href="/gestion" style="color:white;text-decoration: none;">D-I-Y PERGOLA</a></h1>
+  </div> 
+{% endblock %}
+<table id="table" style=" height: 70px; margin-top: 100px;margin-left: 30%;">
+  <caption style="text-align: center; font-size: 20px; font-weight: bolder; margin-bottom: 5%;">VISITEUR</caption>
+  <tr class="tr" >
+        <th style="text-align: center;">Numero</th>
+        <th style="text-align: center;">Date</th>
+    <th style="text-align: center;">Username</th>
+    <th style="text-align: center;">Email</th>
+    <th style="text-align: center;">Action</th>
+  </tr>
+{% for visits in visit %}
+<tr class="tr">
+  <td style="text-align: center;font-weight: bold;font-size:15px;">{{ visits.id }}</td>
+  <td style="text-align: center;font-weight: bold;font-size:15px;">{{ visits.date_visit.strftime("%Y-%m-%d %H:%M") }}</td>
+  <td style="text-align: center;font-weight: bold;font-size:15px;">{{ visits.username }}
+  </td>
+  <td style="text-align: center;font-weight: bold;font-size:15px;">{{ visits.email }}</td>
+  <td style="text-align: center;font-weight: bold;font-size:15px;">{{ visits.action }}</td>
+</tr>
+    
+    {% endfor %}
+    {% endblock %}

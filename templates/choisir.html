@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+ 
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/sidebar.css') }}">
+<style>
+#ac{
+  color: red;
+      
+}
+
+
+#button:enabled:hover {
+  background-color:rgb(139, 196, 46); 
+  color: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+  cursor: pointer;
+}
+#button:disabled{
+  opacity: 0.2;
+  cursor:auto;
+
+}
+
+.title-text {
+  position: fixed;
+  color: #fff;
+  left: 6%;
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none
+  ;
+}
+
+
+</style>
+{% endblock %}
+
+
+{% block log %}
+
+    <li><img src= "{{ url_for('static', filename='image/accueil.png') }}" style="height: 30px;width: 30px;position: fixed;margin-left: -40px;margin-top: -10px;"><a href="/accueil" id="ac" class="side" >    ACCUEIL</a></li>
+<li id="materiaux" style="display:none;opacity: 100%;" ><img src= "{{ url_for('static', filename='image/liste.png') }}" style="height: 30px;width: 30px;position: fixed;margin-left: -40px;margin-top: -10px;"><a  href="/result" id="mat" class="side" > MATERIEAUX</a></li>
+<li id="mescommandes" ><img src= "{{ url_for('static', filename='image/verifier.png') }}" style="height: 30px;width: 30px;position: fixed;margin-left: -40px;margin-top: -10px;"><a href="/mescommandes" id="com"  class="side">MES COMMANDES</a></li>
+<li id="visualiser" style="display:none;opacity: 100%;"><img src= "{{ url_for('static', filename='image/visuel.png') }}" style="height: 30px;width: 30px;position: fixed;margin-left: -40px;margin-top: -10px;"><a href="/visualiser" id="vis"  class="side">VISUALISER</a></li>
+<hr style="margin-top: 15px;border:0.5px  solid gray;margin-bottom: 5px;" >
+<li id="logout" ><img src= "{{ url_for('static', filename='image/se-deconnecter.png') }}" style="height: 30px;width: 30px;position: fixed;margin-left: -40px;margin-top: -10px;"><a  href="/login" class="side"  >LOG OUT</a></li>
+{% endblock %}
+{% block content %}
+
+
+{% block title %}
+<div class="titleov" >
+  <h1 class="title-text" style="margin-left: -5%;" ><a class="tit" href="/accueil" style="color:white;text-decoration: none;">D-I-Y PERGOLA</a></h1>
+  </div> 
+  
+    {% endblock %}
+
+
+  <form id="select-square-form" method="post" action="/accueil">
+  <div class="ov">
+    <h1 class="obj" style="margin-top: 10px;margin-left: -22%;font-size: 30px;">Choisissez vos modules</h1>
+    <div class="grid">
+      {% for i in range(1, 13) %}
+        {% set selected = '' %}
+        {% if i == 1 %}
+          {% set selected = 'selected' %}
+
+        {% endif %}
+        <div class="square" data-square="{{ i }}"></div>
+      {% endfor %}
+      
+    </div>
+  
+    <div class="options-container">
+      <h1 class="ent">PERSONNALISEZ VOS MODULES</h1>
+      <div id="color">
+        <h2 class="c">Couleur</h2>
+        <div class="color-options" style="margin-left:0px">
+          <div id="black" class="color-option black selected" value="black"></div>
+          <div id="red" class="color-option red " value="red"></div>
+          <div id="white" class="color-option white" value="white"></div>
+          <div id="blue" class="color-option blue" value="blue"></div>
+        </div>
+      </div>
+      <div id="height">
+        <h2 class="h">Hauteur</h2>
+        <div class="height-options" style="margin-left:0px">
+          <div id="4m" class="height-option " value="4">2m</div>
+          <div id="5m" class="height-option selected" value="5">3m</div>
+          <div id="6m" class="height-option" value="6">4m</div>
+        </div>
+      </div>
+      <div id="taille">
+        <h2 class="ta">Taille</h2>
+        <div class="size-options" style="margin-left:0px">
+          <div id="1" class="size-option selected" value="1">1x1</div>
+          <div id="2" class="size-option"value="2">2x2</div>
+          <div id="3" class="size-option" value="3">3x3</div>
+        </div>
+        </div>
+        <div id="type">
+          <h2 class="ty">Type</h2>
+          <div class="type-options" style="margin-left:0px">
+            <div id="ouv" class="type-option selected" value="ouvert" >Ouvert</div>
+            <div id="ferm" class="type-option" value="fermee">Fermee</div>
+          </div>
+          </div>
+          <button id="button" name="button">Valider</button>
+    </div>
+    <div class="alert" style="display: none;position: absolute;left: 20%;top: 75%;text-align: center;font-size: 20px;font-weight: bold;color: firebrick;background-color: white;opacity: 0.6;border-radius: 8px;padding: 5px;">Assurez-vous que vous avez selectionne au moins un module.<br>Si vous avez selectionne plusieurs modules assurez-vous qu'ils sont adjacents.</div>   
+
+    
+  </div>   
+
+  </form>
+
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/choisir.js') }}"></script>
+<script src="{{ url_for('static', filename='js/option.js') }}"></script>
+<script src="{{ url_for('static', filename='js/matrice.js') }}"></script>
+{% endblock %}
+
+

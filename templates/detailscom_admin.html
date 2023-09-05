@@ -1,0 +1,18 @@
+{% extends "Detailcommande.html" %}
+
+
+
+{% block log %}
+<li><img src= "{{ url_for('static', filename='image/verifier.png') }}" style="height: 30px;width: 30px;position: fixed;margin-left: -40px;margin-top: -10px;"><a href="/gestion" id="ac" class="side" >COMMANDE</a></li>
+<li><img src= "{{ url_for('static', filename='image/valider.png') }}" style="height: 30px;width: 30px;position: fixed;margin-left: -40px;margin-top: -10px;"><a href="/filtre_valide" id="ac1" class="side" >VALIDE</a></li>
+<li><img src= "{{ url_for('static', filename='image/avertissement.png') }}" style="height: 30px;width: 30px;position: fixed;margin-left: -40px;margin-top: -10px;"><a href="/filtre_attente" id="ac2" class="side" >EN ATTENTE</a></li>
+<li><img src= "{{ url_for('static', filename='image/oeil.png') }}" style="height: 30px;width: 30px;position: fixed;margin-left: -40px;margin-top: -10px;"><a href="/visiteur" id="ac3" class="side" >VISITEUR</a></li>
+<li><img src= "{{ url_for('static', filename='image/manquer-de.png') }}" style="height: 30px;width: 30px;position: fixed;margin-left: -40px;margin-top: -10px;"><a href="/besoin" id="ac4" class="side" >BESOINS</a></li>
+<li><img src= "{{ url_for('static', filename='image/entreprise.png') }}" style="height: 30px;width: 30px;position: fixed;margin-left: -40px;margin-top: -10px;"><a href="/pred" id="ac5" class="side" >PREDICTION</a></li>
+<hr style="margin-top: 15px;border:0.5px  solid gray;margin-bottom: 5px;" >
+<li id="logout" ><img src= "{{ url_for('static', filename='image/se-deconnecter.png') }}" style="height: 40px;width: 30px;position: fixed;margin-left: -40px;margin-top: -10px;"><a  href="/login" class="side" > LOG OUT</a></li>
+
+
+{% endblock %}
+  
+

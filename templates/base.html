@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mon site web</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/choisir.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/sidebar.css') }}">
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+  <style>
+    #logout{
+      bottom: -1px;
+  
+    }
+    
+    #head:hover{
+  background-color:  #ddd;
+}
+/* Style the navigation menu */
+.topnav {
+  padding-right: 50%;
+  z-index: 9;
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  left: 80%;
+  top:80px;
+}
+
+.prod {
+  padding-right: 0%;
+  z-index: 9;
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  left: 70%;
+  top:80px;
+}
+
+/* Hide the links inside the navigation menu (except for logo/home) */
+.topnav #myLinks {
+  display: none;
+  font-weight: bold;
+
+
+}
+.prod #myproducts {
+  display: none;
+  font-weight: bold;
+
+
+}
+
+/* Style navigation menu links */
+.topnav a {
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  display: block;
+
+}
+
+.prod a {
+  color: white;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  display: block;
+}
+
+
+/* Style the hamburger menu */
+.topnav a.icon {
+  padding: 20px;
+  background: "none";
+  display: block;
+  position: fixed;
+  right:2% ;
+  top: 2%;
+}
+
+/* Add a grey background color on mouse-over */
+.topnav a:hover {
+  
+  color: orange;
+}
+
+.prod a:hover {
+  background-color: rgb(94, 119, 246);
+  
+}
+
+
+  </style>
+{% block styles %}
+
+{% endblock %}
+<div class="topnav" style="display: none;">
+  <!-- Navigation links (hidden by default) -->
+  <div id="myLinks">
+    <a href="javascript:void(0);" onmouseover="myFunction2()" onmouseleave="myFunction3()" >PRODUCT</a>
+    <a href="#contact">HELP</a>
+    <a href="#about">ABOUT</a>
+    <a href="#about">PROFIL</a>
+  </div>
+  <!-- "Hamburger menu" / "Bar icon" to toggle the navigation links -->
+  <a id="fl" href="javascript:void(0);" class="icon" onclick="myFunction()" on><img src= "{{ url_for('static', filename='image/fleche.png') }}" style="height: 30px;width: 30px;position: fixed;margin-left: -15px;margin-top: -15px;">
+    <i class="fa fa-bars"></i>
+  </a>
+</div>
+<div class="prod" onmouseover="myFunction4()" onmouseout="myFunction3()" onclick="myFunction1()">
+<div id="myproducts" style="display: none;">
+  <a href="#1" >JOINT 1 ENTREE</a>
+  <a href="#3">JOINT 3 ENTREES</a>
+  <a href="#4">JOINT 4 ENTREES</a>
+  <a href="#5">JOINT 5 ENTREES</a>
+
+</div>
+</div>
+<body class="bd">
+  <header id="h1" style="position: fixed;top: 30px;left: 70%;color: aliceblue;z-index: 2;display: none;"><a id="head" style="color: white;font-weight: bolder;text-decoration: none;padding: 15px;border-radius: 5px;" href="javascript:void(0);" onclick="myFunction1()" >PRODUCT</a></header>
+  <header id="h2" style="position: fixed;top: 30px;left: 75.8%;color: aliceblue;z-index: 2;display: none;"><a id="head" style="color: white;font-weight: bolder;text-decoration: none;padding: 15px;border-radius: 5px;" href="/jf">HELP</a></header>
+  <header id="h3" style="position: fixed;top: 30px;left: 80%;color: aliceblue;z-index:2;display: none;"><a id="head" style="color: white;font-weight: bolder;text-decoration: none;padding: 15px;border-radius: 5px;" href="jf">ABOUT</a></header>
+  <header id="h4" style="position: fixed;top: 30px;left: 85%;color: aliceblue;z-index: 2;display: none;"><a id="head" style="color: white;font-weight: bolder;text-decoration: none;padding: 15px;border-radius: 5px;" href="jf">CONTACT</a></header>
+  <header id="h5" style="position: fixed;top: 30px;left: 95%;color: aliceblue;z-index: 2;display: none;"><img src= "{{ url_for('static', filename='image/profil.png') }}" style="height: 30px;width: 30px;position: fixed;margin-left: -40px;margin-top: -10px;"><a id="head" style="color: white;font-weight: bolder;text-decoration: none;padding: 15px;border-radius: 5px;" href="jf">PROFIL</a></header>
+
+
+  {% block sidebar %}
+  
+  <div class="sidebar">
+    <ul>
+      
+      
+      {% block log %}
+      <li><a href="/accueil" id="ac" class="side" >ACCUEIL</a></li>
+      <li id="logout" ><a  href="/login" class="side" > LOG OUT</a></li>
+      <li><a href="/sgdds" id="vis"  class="side" >VISUALISER</a></li>
+      {% endblock %}
+    </ul>
+  </div>
+  {% endblock %}
+  
+  
+  
+  
+  
+
+  {% block content %}
+  
+  {% endblock %}
+
+  {% block scripts %}
+  
+  {% endblock %}
+  <script>
+    const ismobile1=/Android|webOS|iphone/i.test(navigator.userAgent);
+
+if(ismobile1){
+  var head1=document.getElementById("h1")
+  var head2=document.getElementById("h2")
+  var head3=document.getElementById("h3")
+  var head4=document.getElementById("h4")
+  var head5=document.getElementById("h5")
+  var nav=document.getElementsByClassName("topnav")
+  nav[0].style.display="block"
+  var button = document.createElement("button");
+  var img = document.createElement("img");
+  img.src = "{{ url_for('static', filename='image/men.png') }}";
+  head1.style.display="none"
+  head2.style.display="none"
+  head3.style.display="none"
+  head4.style.display="none"
+  head5.style.display="none"
+  button.appendChild(img);
+  document.body.appendChild(button);
+  button.style.position = "fixed";
+  button.style.top = "70px";
+  button.style.left = "0px";
+  button.style.zIndex = "9999";
+  button.style.padding = "10px";
+  button.style.background = "none";
+  button.style.border = "none";
+  button.style.borderRadius = "0 0 0 10px";
+  img.style.width = "50px";
+  img.style.height = "50px";
+  var prod = document.getElementsByClassName('prod');
+  prod[0].style.top="100px"
+  prod[0].style.left="62%"
+  prod[0].style.paddingRight="0%"
+
+
+  document.addEventListener('click', function(event) {
+    // Vérifier si l'événement click a eu lieu en dehors du div que vous voulez cacher
+    var myDiv = document.getElementById('fl');
+    var myDiv2 = document.getElementById('myproducts');
+    var x = document.getElementById("myLinks");
+    if (event.target !== myDiv2 && !myDiv.contains(event.target)) {
+      // Cacher le div
+      myDiv2.style.display='none'
+      x.style.display = 'none';
+    }
+  });
+  var sidebar=document.getElementsByClassName("sidebar");
+
+  sidebar[0].style.width="220px";
+  sidebar[0].style.height="200%";
+  var sidetext=document.getElementsByClassName("side")
+  sidetext[0].style.fontSize="20px"
+  sidetext[1].style.fontSize="20px"
+  sidetext[2].style.fontSize="20px"
+  sidetext[3].style.fontSize="20px"
+  var bd=document.getElementsByClassName("bd");
+  bd[0].style.overflowY="scroll"
+  bd[0].style.overflowX="scroll"
+ 
+  var sidebar=document.getElementsByClassName("sidebar");
+  if (sidebar.length > 0) {
+  sidebar[0].style.display = "none";
+}
+
+  button.addEventListener("click", function() {
+    var sidebar = document.getElementsByClassName("sidebar");
+    var sidetext = document.getElementsByClassName("side");
+    var bd = document.getElementsByClassName("bd");
+
+    if (sidebar[0].style.display === "none") {
+      
+      sidebar[0].style.display = "block";
+      button.style.left = "220px";
+      
+      
+    } else {
+      sidebar[0].style.display = "none";
+      button.style.left = "0px";
+    }
+  });
+  
+}
+
+if(!ismobile1){
+var button = document.createElement("button");
+    var img = document.createElement("img");
+    img.src = "{{ url_for('static', filename='image/men.png') }}";
+    button.appendChild(img);
+    document.body.appendChild(button);
+    button.style.position = "fixed";
+    button.style.top = "70px";
+    button.style.left = "0px";
+    button.style.zIndex = "9999";
+    button.style.padding = "10px";
+    button.style.background = "none";
+    button.style.border = "none";
+    button.style.borderRadius = "0 0 0 10px";
+    button.style.cursor="pointer"
+    img.style.width = "50px";
+    img.style.height = "50px";
+    button.style.display="none"
+
+function resizeHandler() {
+  
+  var x = document.getElementById("myproducts");
+  x.style.display="none"
+ 
+  
+  if((window.innerWidth <= 1500) && !ismobile1){
+    var prod = document.getElementsByClassName('prod');
+    prod[0].style.top="100px"
+    prod[0].style.left="60.8%"
+    prod[0].style.paddingRight="0%"
+    var head1=document.getElementById("h1")
+    var head2=document.getElementById("h2")
+    var head3=document.getElementById("h3")
+    var head4=document.getElementById("h4")
+    var head5=document.getElementById("h5")
+    var nav=document.getElementsByClassName("topnav")
+    nav[0].style.display="block"
+    head1.style.display="none"
+    head2.style.display="none"
+    head3.style.display="none"
+    head4.style.display="none"
+    head5.style.display="none"
+    button.style.display="block"
+    var sidebar=document.getElementsByClassName("sidebar");
+    if (sidebar.length > 0) {
+  sidebar[0].style.display = "none";
+}
+    button.addEventListener("click", function() {
+      var sidebar = document.getElementsByClassName("sidebar");
+      var sidetext = document.getElementsByClassName("side");
+      var bd = document.getElementsByClassName("bd");
+      if (sidebar[0].style.display === "none") {
+        sidebar[0].style.display = "block";
+        button.style.left = "250px";
+      } else {
+        sidebar[0].style.display = "none";
+        button.style.left = "0px";
+      }
+    });
+  }
+  else 
+  {
+    
+    if(!ismobile1){
+      document.addEventListener('click', function(event) {
+    // Vérifier si l'événement click a eu lieu en dehors du div que vous voulez cacher
+    var myDiv = document.getElementById('h1');
+    var x = document.getElementById("myproducts");
+    if (event.target !== myDiv && !myDiv.contains(event.target)) {
+      // Cacher le div
+      x.style.display = 'none';
+    }
+  });
+    var head1=document.getElementById("h1")
+    var head2=document.getElementById("h2")
+    var head3=document.getElementById("h3")
+    var head4=document.getElementById("h4")
+    var head5=document.getElementById("h5")
+    var nav=document.getElementsByClassName("topnav")
+    nav[0].style.display="none"
+    head1.style.display="block"
+    head2.style.display="block"
+    head3.style.display="block"
+    head4.style.display="block"
+    head5.style.display="block"
+    button.style.display="block"
+    var prod = document.getElementsByClassName('prod');
+  prod[0].style.top="80px"
+  prod[0].style.left="70%"
+  prod[0].style.paddingRight="0%"
+
+  var sidebar=document.getElementsByClassName("sidebar");
+  button.style.display="none"
+  if (sidebar.length > 0) {
+  sidebar[0].style.display = "none";
+}
+  button.style.left = "0px";
+
+
+    }
+
+  }
+
+
+}
+}
+// appel du handler lors du chargement initial de la page
+resizeHandler();
+
+// ajouter un listener pour l'événement de redimensionnement de la fenêtre
+window.addEventListener("resize", resizeHandler);
+
+
+
+document.addEventListener('click', function(event) {
+    // Vérifier si l'événement click a eu lieu en dehors du div que vous voulez cacher
+    var myDiv = document.getElementById('fl');
+    var x = document.getElementById("myLinks");
+    if (event.target !== myDiv && !myDiv.contains(event.target)) {
+      // Cacher le div
+      x.style.display = 'none';
+    }
+  });
+
+ 
+
+function myFunction() {
+  var x = document.getElementById("myLinks");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+
+function myFunction1() {
+  var x = document.getElementById("myproducts");
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+
+function myFunction2() {
+  var x = document.getElementById("myproducts");
+  
+  if (x.style.display === "block") {
+    x.style.display = "none";
+  } else {
+    x.style.display = "block";
+  }
+}
+
+function myFunction3() {
+  var x = document.getElementById("myproducts");
+    x.style.display = "none";
+}
+
+function myFunction4() {
+  var x = document.getElementById("myproducts");
+    x.style.display = "block";
+}
+function myFunction5() {
+  var x = document.getElementById("myLinks");
+    x.style.display = "none";
+}
+
+
+</script>
+
+  <!-- <script src="{{ url_for('static', filename='sidebar.js') }}"></script> -->
+
+</body>
+</html>
+

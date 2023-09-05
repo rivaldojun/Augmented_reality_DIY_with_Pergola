@@ -1,0 +1,69 @@
+{% extends "List_mat.html" %}
+
+
+{% block styles %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/list_mat.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/sidebar.css') }}">
+<style>
+#com{
+  color: red;
+      
+}
+
+.title-text {
+  position: fixed;
+  color: #fff;
+  left: 6%;
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none
+  ;
+}
+
+</style>
+
+
+{% endblock %}
+
+{% block log %}
+
+<li><img src= "{{ url_for('static', filename='image/accueil.png') }}" style="height: 30px;width: 30px;position: fixed;margin-left: -40px;margin-top: -10px;"><a href="/accueil" id="ac" class="side" >ACCUEIL</a></li>
+<li id="materiaux" style="display:none;opacity: 100%;" ><img src= "{{ url_for('static', filename='image/liste.png') }}" style="height: 30px;width: 30px;position: fixed;margin-left: -40px;margin-top: -10px;"><a  href="/result" id="mat" class="side" > MATERIEAUX</a></li>
+<li id="mescommandes" ><img src= "{{ url_for('static', filename='image/verifier.png') }}" style="height: 30px;width: 30px;position: fixed;margin-left: -40px;margin-top: -10px;"><a href="/mescommandes" id="com"  class="side">MES COMMANDES</a></li>
+<li id="visualiser" style="display:none;opacity: 100%;"><img src= "{{ url_for('static', filename='image/visuel.png') }}" style="height: 30px;width: 30px;position: fixed;margin-left: -40px;margin-top: -10px;"><a href="/visualiser" id="vis"  class="side">VISUALISER</a></li>
+<hr style="margin-top: 15px;border:0.5px  solid gray;margin-bottom: 5px;" >
+<li id="logout" ><img src= "{{ url_for('static', filename='image/se-deconnecter.png') }}" style="height: 30px;width: 30px;position: fixed;margin-left: -40px;margin-top: -10px;"><a  href="/login" class="side"  >LOG OUT</a></li>
+{% endblock %}
+{% block content %}
+
+{% block title %}
+<div class="titleov">
+  <h1 class="title-text" style="margin-left: -5%;" ><a class="tit" href="/accueil" style="color:white;text-decoration: none;">D-I-Y PERGOLA</a></h1>
+  </div> 
+  
+    {% endblock %}
+<table id="table" style=" height: 70px; margin-top: 100px;margin-left: 30%;">
+  <tr class="tr" >
+    <th style="text-align: center;">Articles</th>
+    <th style="text-align: center;">Quantite</th>
+    <th style="text-align: center;">Prix unitaire</th>
+  </tr>
+
+<tr class="tr">
+    {% for commande_produit in commande.produits %}
+  <td style="text-align: center;font-weight: bold;font-size:15px;">{{ commande_produit.produit.nom }}   {{commande_produit.couleur_c}}
+  </td>
+  <td style="text-align: center;font-weight: bold;font-size:15px;">{{ commande_produit.quantite }} unites</td>
+  <td style="text-align: center;font-weight: bold;font-size:15px;">{{ commande_produit.produit.prix }} $</td>
+</tr>
+    
+    
+      
+    {% endfor %}
+    {% block scripts %}
+    <script src="{{ url_for('static', filename='js/choisir.js') }}"></script>
+    {% endblock %}
+    
+    {% endblock %}
+
